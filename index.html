@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ClassPulse — Academic Intelligence</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ===== BRAND HEADER ===== -->
+<div class="logo-wrap">
+  <div class="logo-badge">CP</div>
+  <div class="logo-text">
+    <h2>ClassPulse</h2>
+    <div class="logo-tag">Academic Intelligence</div>
+  </div>
+</div>
+
+<div class="panel-layout">
+
+<!-- ================= ATTENDANCE PANEL ================= -->
+<div class="panel">
+
+<h3 class="section-title"></h3>
+
+<!-- ===== PRO METRIC STRIP ===== -->
+<div class="dashboard dashboard-strip">
+
+  <div class="card">
+    <p>Overall</p>
+    <h3 id="overallAttendance">0%</h3>
+  </div>
+
+  <div class="card">
+    <p>Subjects</p>
+    <h3 id="totalSubjects">0</h3>
+  </div>
+
+  <div class="card danger">
+    <p>Below 75%</p>
+    <h3 id="below75">0</h3>
+  </div>
+
+</div>
+
+<div class="month-select" id="monthSelect">
+<div class="month-selected">Select Month</div>
+<div class="month-options">
+<div>January</div><div>February</div><div>March</div>
+<div>April</div><div>May</div><div>June</div>
+<div>July</div><div>August</div><div>September</div>
+<div>October</div><div>November</div><div>December</div>
+</div>
+</div>
+
+<input type="hidden" id="month">
+
+<table class="subject-table">
+<thead>
+<tr><th>Subject</th><th>Total</th><th>Attended</th></tr>
+</thead>
+<tbody id="subjectRows">
+<tr>
+<td><input placeholder="Subject" maxlength="30"></td>
+<td><input type="number" min="1" max="500"></td>
+<td><input type="number" min="0" max="500"></td>
+</tr>
+</tbody>
+</table>
+
+<div class="btn-group">
+<button onclick="addRow()">+ Add Subject</button>
+<button onclick="calculateAll()">Calculate All</button>
+</div>
+
+<ul id="history"></ul>
+<p id="emptyState">No subjects added yet</p>
+<div id="finalSummary"></div>
+
+<div class="btn-group">
+<button onclick="clearMonth()">Clear Selected Month</button>
+<button class="danger" onclick="clearAll()">Clear All</button>
+</div>
+
+<div class="btn-group">
+<button onclick="exportCSV()">Export CSV</button>
+<button onclick="print()">Print / Save PDF</button>
+</div>
+
+</div>
+
+<!-- ================= CIA PANEL ================= -->
+
+<div class="panel">
+<h3 class="section-title">CIA Prediction Tracker</h3>
+
+<table class="subject-table">
+<thead>
+<tr>
+<th>Subject</th>
+<th>CIA-1 (25)</th>
+<th>Required CIA-2</th>
+<th>Predicted Avg</th>
+</tr>
+</thead>
+
+<tbody id="ciaRows">
+<tr>
+<td><input maxlength="30"></td>
+<td><input type="number" min="0" max="25"></td>
+<td class="needCell">—</td>
+<td class="avgCell">—</td>
+</tr>
+</tbody>
+</table>
+
+<div class="btn-group">
+<button onclick="addCiaRow()">+ Add Subject</button>
+<button onclick="calculateCIA()">Predict CIA-2</button>
+</div>
+
+<ul id="ciaHistory"></ul>
+<div id="ciaSummary"></div>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

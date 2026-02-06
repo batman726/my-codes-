@@ -1,0 +1,519 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+  transition: all .2s ease;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 10%, #1e293b, #020617 60%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e5e7eb;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(30,41,59,.65);
+  backdrop-filter: blur(18px);
+  padding: 30px;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+
+
+/* ================= PANELS ================= */
+
+.panel-layout {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width:1024px) {
+  .panel-layout { grid-template-columns: 1fr 1fr; }
+}
+
+.panel {
+  background: rgba(255,255,255,.05);
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.card.danger {
+  background: linear-gradient(135deg,#3f0a15,#1a0207);
+}
+
+
+/* ===== DASHBOARD RISK COLORS ===== */
+
+.card.dash-safe {
+  background: linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.05));
+}
+
+.card.dash-risk {
+  background: linear-gradient(180deg, rgba(251,191,36,.18), rgba(251,191,36,.05));
+}
+
+.card.dash-critical {
+  background: linear-gradient(180deg, rgba(248,113,113,.20), rgba(248,113,113,.06));
+}
+
+
+/* ================= INPUTS ================= */
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+}
+
+input:focus, select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 2px rgba(129,140,248,.25);
+  outline: none;
+}
+
+
+/* ================= TABLE ================= */
+
+.subject-table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.subject-table th {
+  text-align: left;
+  opacity: .7;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg,#6366f1,#818cf8);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(99,102,241,.35);
+}
+
+button.danger {
+  background: linear-gradient(135deg,#ef4444,#f87171);
+}
+
+
+/* ================= LIST ================= */
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-top: 8px;
+}
+
+
+/* ================= SUBJECT CARD UI ================= */
+
+.subject-card {
+  background: rgba(255,255,255,.06);
+  padding: 14px;
+  border-radius: 14px;
+  margin-top: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.row-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.title {
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.3px;
+}
+
+
+/* ===== BADGES ===== */
+
+.badge {
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.badge.safe {
+  background:#14532d;
+  color:#4ade80;
+}
+
+.badge.atrisk {
+  background:#452c07;
+  color:#fbbf24;
+}
+
+.badge.critical {
+  background:#450a0a;
+  color:#f87171;
+}
+
+
+/* ===== PROGRESS BAR ===== */
+
+.progress-wrap {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:6px;
+}
+
+.progress-bar {
+  flex:1;
+  height:10px;
+  background:rgba(255,255,255,.15);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#6366f1,#a5b4fc);
+  transition: width .9s cubic-bezier(.4,0,.2,1);
+}
+
+.progress-text {
+  font-size:12px;
+  opacity:.85;
+  width:48px;
+}
+
+
+/* ===== NOTE TEXT ===== */
+
+.note {
+  font-size:13px;
+  line-height:1.35;
+  margin-top:6px;
+}
+
+
+/* ================= EMPTY ================= */
+
+#emptyState {
+  text-align: center;
+  opacity: .6;
+}
+
+
+/* ================= COMPACT MOBILE ================= */
+
+@media (max-width: 640px) {
+
+  .container {
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .panel {
+    padding:12px;
+  }
+
+  .subject-card {
+    padding:10px;
+  }
+
+  button {
+    padding:10px;
+    font-size:14px;
+  }
+
+  input, select {
+    padding:10px;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr 1fr;
+    gap:8px;
+  }
+
+  .card {
+    padding:10px;
+  }
+
+  .title {
+    font-size:14px;
+  }
+
+}
+/* ================= TYPOGRAPHY SCALE ================= */
+
+h2 {
+  font-size: 28px;
+  letter-spacing: .4px;
+  margin-bottom: 18px;
+}
+
+h3 {
+  font-size: 18px;
+  letter-spacing: .3px;
+  margin: 0 0 10px;
+}
+
+h4 {
+  font-size: 15px;
+  letter-spacing: .3px;
+  margin: 10px 0 6px;
+}
+
+p {
+  line-height: 1.45;
+}
+
+
+/* ================= MICRO ANIMATIONS ================= */
+
+/* entrance fade */
+
+.panel,
+.card,
+.subject-card {
+  animation: fadeUp .5s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* hover lift */
+
+.subject-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+
+/* button press feel */
+
+button:active {
+  transform: translateY(1px) scale(.99);
+  box-shadow: none;
+}
+
+
+/* progress bar glow */
+
+.progress-fill {
+  position: relative;
+}
+
+.progress-fill::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  opacity:.35;
+}
+
+
+/* ================= SPACING RHYTHM ================= */
+
+.panel > * + * {
+  margin-top: 12px;
+}
+
+.subject-card .note div {
+  margin-top: 2px;
+}
+
+
+/* ================= MOBILE TYPE TUNE ================= */
+
+@media (max-width:640px) {
+  h2 { font-size: 22px; }
+  h3 { font-size: 16px; }
+  h4 { font-size: 14px; }
+}
+ /* ================= PREMIUM MONTH DROPDOWN ================= */
+
+.month-select {
+  position: relative;
+  margin-top: 10px;
+  user-select: none;
+}
+
+.month-selected {
+  background: rgba(255,255,255,.06);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.2);
+  cursor: pointer;
+}
+
+.month-options {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 110%;
+  background: #020617;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: .25s ease;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+}
+
+.month-select.open .month-options {
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.month-options div {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.month-options div:hover {
+  background: rgba(99,102,241,.18);
+  padding-left: 16px;
+}
+/* ===== DROPDOWN VISIBILITY FIX ===== */
+
+.container,
+.panel,
+.panel-layout {
+  overflow: visible !important;
+}
+
+.month-select {
+  position: relative;
+  z-index: 9999;
+}
+
+.month-options {
+  z-index: 10000;
+  max-height: 260px;
+  overflow-y: auto;
+}
+/* ===== DROPDOWN CLICK BLOCK FIX ===== */
+
+.month-options {
+  pointer-events: none;
+}
+
+.month-select.open .month-options {
+  pointer-events: auto;
+} 
+/* ===== BRAND LOGO BADGE ===== */
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.logo-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: .5px;
+  color: white;
+  background: linear-gradient(135deg,#6366f1,#22d3ee);
+  box-shadow:
+    0 8px 24px rgba(99,102,241,.45),
+    inset 0 0 12px rgba(255,255,255,.25);
+}
+
+.logo-text h2 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: .4px;
+}
+
+.logo-tag {
+  font-size: 13px;
+  opacity: .7;
+  letter-spacing: .6px;
+} 
+/* ===== DASHBOARD STRIP MODE ===== */
+
+.dashboard-strip {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width:640px) {
+  .dashboard-strip {
+    grid-template-columns: 1fr;
+  }
+}
